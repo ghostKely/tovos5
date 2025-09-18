@@ -7,7 +7,7 @@ class Login_controller extends CI_Controller {
         parent::__construct();
         $this->load->model('dao_model', 'dao');
     }
-
+ 
 	public function index()
 	{
 		$this->load->view('login');

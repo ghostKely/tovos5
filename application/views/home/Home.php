@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <?php $this->load->view('component/styleLink/CssLink')?>
     </head>
-
+    <?php if (isset($value)) {
+echo $value;
+    } ?>
     <body> 
         <div class="col-md-12 row">
         <?php $this->load->view('component/navbar/Navbar')?>
