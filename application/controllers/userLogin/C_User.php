@@ -32,6 +32,18 @@ class C_User extends CI_Controller {
 		$this->load->view('home/Home', $data);                  //page principale où on load les pages
     }
 
+/* FONCTION POUR VERIFIER SI USER A REMPLI TOUS LES CHAMPS
+        SI 1 SEUL VIDE ALORS REDIRECTION
+*/
+    public function checkChampsVide($email, $mdp, $logAsValue) {
+        if (empty($email) || empty($mdp)) {
+            $this->session->set_flashdata('checkValidation', [                          //redirect vers page de login + popup de validation de login fail
+                'message' => "Veuillez remplir tous les champs !"    //message de validation pour page Validation.php
+            ]);
+            redirect('userLogin/C_User/loginAs/'.$logAsValue);                          //redirection vers page de login
+        }
+    }
+
 /* FONCTION POUR RECUPERER LES INFORMATIONS DE LA BASE DE DONNEE */
     public function checkLogs($email, $mdp, $tableUser) {
         $sql = "SELECT *
@@ -57,12 +69,16 @@ class C_User extends CI_Controller {
         $logAsValue = $this->input->post('logValue');               //recup de logvalue (1/2/3)
         $tableUser = $this->getTableUser($logAsValue);              //table où se trouve les logs de user
 
+        $this->checkChampsVide($email, $mdp, $logAsValue);          //checking des informations user is misy champ vide
+
         $userExist = $this->checkLogs($email, $mdp, $tableUser);    //checking des informations user
         if ($userExist === false) {
             $this->session->set_flashdata('checkValidation', [                          //redirect vers page de login + popup de validation de login fail
                 'message' => "Erreur d'authentification ! Vérifier vos informations"    //message de validation pour page Validation.php
             ]);
-            redirect('userLogin/C_User/loginAs');                   //redirection vers page de login
+            redirect('userLogin/C_User/loginAs/'.$logAsValue);                   //redirection vers page de login
+        } else {
+            
         }
     }
 
