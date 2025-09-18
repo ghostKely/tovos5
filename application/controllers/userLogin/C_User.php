@@ -16,8 +16,8 @@ class C_User extends CI_Controller {
         .case 3 : login as dg => table dg
 */
     public function getTableUser($logAsValue) {
-        if ($logAsValue == 1) { return "rh"; }
-        else if ($logAsValue == 2) { return "manager"; }
+        if ($logAsValue == 1) { return "manager"; }
+        else if ($logAsValue == 2) { return "rh"; }
         else if ($logAsValue == 3) { return "dg"; }
     }
 
@@ -78,11 +78,18 @@ class C_User extends CI_Controller {
             ]);
             redirect('userLogin/C_User/loginAs/'.$logAsValue);                   //redirection vers page de login
         } else {
-            
+            $this->session->set_userdata('logValue', $logAsValue);              //mise en session de la valeur de logAsValue (1/2/3) pour les navbar
+            redirect('C_Home');
         }
     }
 
-
+/* FONCTION DE DECONNEXION 
+        DETRUIT TOUTES LES DONNEES DE LA SESSION EXISTANTE
+*/
+    public function disconnect() {
+        $this->session->unset_userdata('logValue');
+        redirect('C_Home');
+    }
 
 
     

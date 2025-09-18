@@ -1,7 +1,7 @@
     <div class="col-md-1 url">
         <div class="logodiv"><img class="logo" src="<?php echo base_url('assets/image/logo.jpg'); ?>"></div>
         <div class="scroll-container">
-            <a href="<?php echo base_url('login_controller/disconnect')?>">
+            <a href="<?php echo base_url('userLogin/C_User/disconnect')?>">
                 <div class="boutonnavbar">
                     <span class="glyphicon glyphicon-th-large icon" aria-hidden="true"></span>
                     <span class="link-text">Log Out</span>
@@ -14,32 +14,26 @@
                 </div>
             </a>
             
-            <div class="boutonnavbar" id="login" data-dropdown="dropdownMenulogin">
-                <span class="glyphicon glyphicon-user icon" aria-hidden="true"></span>
-                <span class="link-text">Log as</span>
+            <div class="boutonnavbar" id="besoin" data-dropdown="dropdownMenubesoin">
+                <span class="glyphicon glyphicon-shopping-cart icon" aria-hidden="true"></span>
+                <span class="link-text">Besoins</span>
                 <span class="glyphicon glyphicon-menu-down down" aria-hidden="true"></span>
             </div>
-                <div id="dropdownMenulogin" class="dropdown-content">
-                    <a href="<?php echo base_url('userLogin/C_User/loginAs/1')?>">
+                <div id="dropdownMenubesoin" class="dropdown-content">
+                    <a href="<?php echo base_url('besoin/C_Besoin/page_AjoutBesoin/3')?>">
                         <div class="boutonnavbar">
-                            <span class="glyphicon glyphicon-user icon" aria-hidden="true"></span>
-                            <span class="link-text">Resp RH</span>
+                            <span class="glyphicon glyphicon-plus-sign icon" aria-hidden="true"></span>
+                            <span class="link-text">Ajout</span>
                         </div>
                     </a>
-                    <a href="<?php echo base_url('userLogin/C_User/loginAs/2')?>">
+                    <a href="<?php echo base_url('besoin/C_Besoin/liste_besoins/3')?>">
                         <div class="boutonnavbar">
-                            <span class="glyphicon glyphicon-user icon" aria-hidden="true"></span>
-                            <span class="link-text">Manager</span>
-                        </div>
-                    </a>
-                    <a href="<?php echo base_url('userLogin/C_User/loginAs/3')?>">
-                        <div class="boutonnavbar">
-                            <span class="glyphicon glyphicon-user icon" aria-hidden="true"></span>
-                            <span class="link-text">DG</span>
+                            <span class="glyphicon glyphicon-list icon" aria-hidden="true"></span>
+                            <span class="link-text">Liste</span>
                         </div>
                     </a>
                 </div>
-           
+            
         </div>
     </div>
     
@@ -99,3 +93,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
+
+    
+<!--            <a href="C_Notification_L">
+                <div class="notification">
+                    <span class="glyphicon glyphicon-bell notificationicon" aria-hidden="true"></span>
+                    <span class="notificationlink-text">Notification</span>
+                    <span class="notificationbadge"></span>
+                </div>
+            </a>-->

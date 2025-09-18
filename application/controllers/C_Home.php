@@ -12,7 +12,7 @@ class C_Home extends CI_Controller {
 	public function index() {
         $data['pageTitle'] = "Gestion Home";    //titre de la page de destination
         $data['pageToLoad'] = "home/Welcome";   //path de la page destination
-        
+
 		$this->load->view('home/Home', $data);  //page principale
 	}
 

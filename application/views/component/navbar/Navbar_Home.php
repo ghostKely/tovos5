@@ -1,7 +1,7 @@
     <div class="col-md-1 url">
         <div class="logodiv"><img class="logo" src="<?php echo base_url('assets/image/logo.jpg'); ?>"></div>
         <div class="scroll-container">
-            <a href="<?php echo base_url('login_controller/disconnect')?>">
+            <a href="<?php echo base_url('userLogin/C_User/disconnect')?>">
                 <div class="boutonnavbar">
                     <span class="glyphicon glyphicon-th-large icon" aria-hidden="true"></span>
                     <span class="link-text">Log Out</span>
@@ -23,13 +23,13 @@
                     <a href="<?php echo base_url('userLogin/C_User/loginAs/1')?>">
                         <div class="boutonnavbar">
                             <span class="glyphicon glyphicon-user icon" aria-hidden="true"></span>
-                            <span class="link-text">Resp RH</span>
+                            <span class="link-text">Manager</span>
                         </div>
                     </a>
                     <a href="<?php echo base_url('userLogin/C_User/loginAs/2')?>">
                         <div class="boutonnavbar">
                             <span class="glyphicon glyphicon-user icon" aria-hidden="true"></span>
-                            <span class="link-text">Manager</span>
+                            <span class="link-text">Resp RH</span>
                         </div>
                     </a>
                     <a href="<?php echo base_url('userLogin/C_User/loginAs/3')?>">
