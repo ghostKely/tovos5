@@ -80,7 +80,6 @@ CREATE SEQUENCE seq_reponse START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE seq_departement START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE seq_poste START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE seq_contrat START WITH 1 INCREMENT BY 1;
-CREATE SEQUENCE seq_profil START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE seq_besoin START WITH 1 INCREMENT BY 1;
 CREATE SEQUENCE seq_annonce START WITH 1 INCREMENT BY 1;
 
@@ -136,33 +135,30 @@ CREATE TABLE Contrat(
    PRIMARY KEY(idContrat)
 );
 
--- Table Profil
-CREATE TABLE Profil(
-   idProfil VARCHAR(50) DEFAULT 'PRFL' || LPAD(NEXTVAL('seq_profil')::text, 6, '0'),
-   annee_experience INT,
-   id_diplome VARCHAR(50) NOT NULL,
-   PRIMARY KEY(idProfil),
-   FOREIGN KEY(id_diplome) REFERENCES Diplome(id_diplome)
-);
-
 -- Table Besoin
 CREATE TABLE Besoin(
    idBesoin VARCHAR(50) DEFAULT 'BSN' || LPAD(NEXTVAL('seq_besoin')::text, 6, '0'),
    nombre_employe INT,
    description VARCHAR(500),
+   annee_experience INT,
+   dateBesoin DATE,
+   idManager VARCHAR(50) NOT NULL,
+   id_diplome VARCHAR(50) NOT NULL,
    idContrat VARCHAR(50) NOT NULL,
    idPoste VARCHAR(50) NOT NULL,
    PRIMARY KEY(idBesoin),
+   FOREIGN KEY(idManager) REFERENCES Manager(idManager),
+   FOREIGN KEY(id_diplome) REFERENCES Diplome(id_diplome),
    FOREIGN KEY(idContrat) REFERENCES Contrat(idContrat),
    FOREIGN KEY(idPoste) REFERENCES Poste(idPoste)
 );
 
--- Profil recquis pour le besoin
-CREATE TABLE Besoin_profil(
-   idProfil VARCHAR(50),
-   idBesoin VARCHAR(50),
-   PRIMARY KEY(idProfil, idBesoin),
-   FOREIGN KEY(idProfil) REFERENCES Profil(idProfil),
+-- Table Besoin Valide
+CREATE TABLE BesoinValide(
+   idBesoinValide VARCHAR(50) DEFAULT 'BSNVLD' || LPAD(NEXTVAL('seq_besoin')::text, 6, '0'),
+   dateValidation DATE,
+   idBesoin VARCHAR(50) UNIQUE NOT NULL,
+   PRIMARY KEY(idBesoinValide),
    FOREIGN KEY(idBesoin) REFERENCES Besoin(idBesoin)
 );
 

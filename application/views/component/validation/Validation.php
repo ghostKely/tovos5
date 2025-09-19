@@ -1,6 +1,6 @@
     <?php 
-    $checkValidation = $this->session->flashdata('checkValidation');
-    if (isset($checkValidation) && is_array($checkValidation)) { ?>
+    if ($this->session->flashdata('checkValidation')) { 
+    $checkValidation = $this->session->flashdata('checkValidation');?>
         <div class="popupUser" id="popupReset">
             <div class="popup-contentEntree" id="popupContent">
                 <h3><?php echo $checkValidation['message']; ?></h3>

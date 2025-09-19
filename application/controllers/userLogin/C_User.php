@@ -50,14 +50,14 @@ class C_User extends CI_Controller {
                 FROM ".$tableUser.
                 " WHERE email='".$email."'
                  AND mdp='".$mdp."'";                           //requete pour avoir les infromations de user dans BDD
-                 var_dump($sql);
+                 
         $data['infoUser'] = $this->dao->executeQuery($sql);     //contient les colonnes demandée dans requête
-        var_dump($data['infoUser']);
+        
         if (empty($data['infoUser'])) {                         //si vide => erreur authentification (email / mot de passe)
             return false;                                       
         }
 
-        return true;
+        return $data['infoUser'];
     }
 
 /* FONCTION D'AUTHENTIFICATION POUR LES USERS
@@ -78,7 +78,9 @@ class C_User extends CI_Controller {
             ]);
             redirect('userLogin/C_User/loginAs/'.$logAsValue);                   //redirection vers page de login
         } else {
-            $this->session->set_userdata('logValue', $logAsValue);              //mise en session de la valeur de logAsValue (1/2/3) pour les navbar
+            $this->session->set_userdata('logValue', $logAsValue);               //mise en session de la valeur de logAsValue (1/2/3) pour les navbar
+            $colonne = "id".$tableUser;
+            $this->session->set_userdata('id', $userExist[0][$colonne]);           //mise en session de la valeur de id 
             redirect('C_Home');
         }
     }
